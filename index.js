@@ -45,7 +45,7 @@ var denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
 let monthlyRate = (numerator / denominator) * principal;
 monthlyRate = monthlyRate.toFixed(2);
 
-console.log(monthlyRate)
+console.log(monthlyRate);
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
@@ -55,7 +55,7 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 let mortgageCalculator = function () {
   let phrase = ", your monthly rate is ";
   console.log(name + phrase + monthlyRate);
-}
+};
 mortgageCalculator();
 
 // 🏡 Task 4: Arguments and Parameters
@@ -63,24 +63,60 @@ mortgageCalculator();
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
-let P = principal;
-let I = interestRate;
-let N = periods;
 
-mortgageCalculator(200000, 0.05, 30)
+// let P = principal;
+// let I = interestRate;
+// let N = periods;
+
+
+mortgageCalculator = function (P, I, N) {
+  var numerator =
+    I * Math.pow(1 + I, N);
+  var denominator = Math.pow(1 + I, N) - 1;
+  let monthlyRate = (numerator / denominator) * P;
+  monthlyRate = monthlyRate.toFixed(2);
+  console.log(monthlyRate)
+
+};
+mortgageCalculator(200000, 0.05 / 12, 30 * 12);
+
+
+
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 
-// function mortgageCalculator(creditScore) {
+mortgageCalculator = function (P, I, N, creditScore = 0 && 800) {
+  if (creditScore >= 740) {
+    I = I - (0.5 / 100)
+    console.log("good credit")
+  }
+  else if (creditScore <= 660) {
+    I = I + (0.5 / 100)
+    console.log("poor credit")
+  }
+
+  I = I / 12
+  N = N * 12
+
+  var numerator =
+    I * Math.pow(1 + I, N);
+  var denominator = Math.pow(1 + I, N) - 1;
+  let monthlyRate = (numerator / denominator) * P;
+  monthlyRate = monthlyRate.toFixed(2);
+  console.log(monthlyRate)
+}
+mortgageCalculator(200000, 0.05, 30, 620);
+
+//  let mortgageCalculator = function (creditScore) {
 //   if (creditScore > 740) {
 //   } else creditScore < 660;
 //   console.log(creditScore);
 // }
 
-// mortgageCalculator(670);
+
 
 // 🏡 Task 6: Loops
 /* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
@@ -95,20 +131,54 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+const variableInterestRate = function (P, I, N,) {
+  interestDisplay = I - 0.02
+  I = I - 0.02
+  I = I / 12
+  N = N * 12
+
+  var numerator =
+    I * Math.pow(1 + I, N);
+  var denominator = Math.pow(1 + I, N) - 1;
+  let monthlyRate = (numerator / denominator) * P;
+  monthlyRate = monthlyRate.toFixed(0);
+  console.log(monthlyRate)
+
+  interestDisplay = interestDisplay.toFixed(3)
+ 
+  console.log(
+    name +
+    ", " +
+    "with an interest rate of " +
+    interestDisplay +
+    " your monthly rate is " +
+    monthlyRate);
+
+}
+
+
+let rate = 0.04
+
+for (let i = 0; i < 9; i++) {
+  variableInterestRate(200000, rate, 30);
+  rate += 0.005
+}
+
+
 // const variableInterestRate = function () {
 //   for (let i = 0; i < 9; i++) {
 //     console.log(
 //       name +
-//         ", " +
-//         "with an interest rate of " +
-//         interestRate +
-//         " your monthly rate is " +
-//         monthlyRate
+//       ", " +
+//       "with an interest rate of " +
+//       interestRate +
+//       " your monthly rate is " +
+//       monthlyRate
 //     );
 //   }
 // };
 
-// variableInterestRate(200000, 0.04, 30);
+// variableInterestRate(200000, 0.05, 30);
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
