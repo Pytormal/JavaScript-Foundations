@@ -43,7 +43,7 @@ var numerator =
   monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods);
 var denominator = Math.pow(1 + monthlyInterestRate, periods) - 1;
 let monthlyRate = (numerator / denominator) * principal;
-monthlyRate = monthlyRate.toFixed(2);
+monthlyRate = Number(monthlyRate.toFixed(2));
 
 console.log(monthlyRate);
 
@@ -74,7 +74,7 @@ mortgageCalculator = function (P, I, N) {
     I * Math.pow(1 + I, N);
   var denominator = Math.pow(1 + I, N) - 1;
   let monthlyRate = (numerator / denominator) * P;
-  monthlyRate = monthlyRate.toFixed(2);
+  monthlyRate = Number(monthlyRate.toFixed(2));
   console.log(monthlyRate)
 
 };
@@ -105,7 +105,7 @@ mortgageCalculator = function (P, I, N, creditScore = 0 && 800) {
     I * Math.pow(1 + I, N);
   var denominator = Math.pow(1 + I, N) - 1;
   let monthlyRate = (numerator / denominator) * P;
-  monthlyRate = monthlyRate.toFixed(2);
+  monthlyRate = Number(monthlyRate.toFixed(0));
   console.log(monthlyRate)
 }
 mortgageCalculator(200000, 0.05, 30, 620);
@@ -141,11 +141,11 @@ const variableInterestRate = function (P, I, N,) {
     I * Math.pow(1 + I, N);
   var denominator = Math.pow(1 + I, N) - 1;
   let monthlyRate = (numerator / denominator) * P;
-  monthlyRate = monthlyRate.toFixed(0);
-  console.log(monthlyRate)
 
-  interestDisplay = interestDisplay.toFixed(3)
- 
+  monthlyRate =Number (monthlyRate.toFixed(0));
+  interestDisplay =Number( interestDisplay.toFixed(3))
+
+  
   console.log(
     name +
     ", " +
