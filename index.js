@@ -78,7 +78,7 @@ mortgageCalculator = function (P, I, N) {
   console.log(monthlyRate)
 
 };
-mortgageCalculator(200000, 0.05 / 12, 30 * 12);
+mortgageCalculator(200000, 0.05 / 12, 30 * 12)
 
 
 
@@ -97,6 +97,9 @@ mortgageCalculator = function (P, I, N, creditScore = 0 && 800) {
     I = I + (0.5 / 100)
     console.log("poor credit")
   }
+  else {
+    return I
+  }
 
   I = I / 12
   N = N * 12
@@ -108,7 +111,7 @@ mortgageCalculator = function (P, I, N, creditScore = 0 && 800) {
   monthlyRate = Number(monthlyRate.toFixed(0));
   console.log(monthlyRate)
 }
-mortgageCalculator(200000, 0.05, 30, 620);
+mortgageCalculator(200000, 0.05, 30, 670);
 
 //  let mortgageCalculator = function (creditScore) {
 //   if (creditScore > 740) {
@@ -145,7 +148,7 @@ const variableInterestRate = function (P, I, N,) {
   monthlyRate =Number (monthlyRate.toFixed(0));
   interestDisplay =Number( interestDisplay.toFixed(3))
 
-  
+
   console.log(
     name +
     ", " +
@@ -165,8 +168,23 @@ for (let i = 0; i < 9; i++) {
 }
 
 
-// const variableInterestRate = function () {
-//   for (let i = 0; i < 9; i++) {
+// const variableInterestRate = function (P, I, N) {
+
+//   interestDisplay = I - 0.02
+//   I = I - 0.02
+//   I = I / 12
+//   N = N * 12
+ 
+
+//    numerator =
+//     I * Math.pow(1 + I, N);
+//    denominator = Math.pow(1 + I, N) - 1;
+//   monthlyRate = (numerator / denominator) * P;
+
+//   monthlyRate = Number(monthlyRate.toFixed(0));
+//   interestDisplay = Number(interestDisplay.toFixed(3))
+
+//   for (let I = 0.02; I <= 0.06; I += 0.005) {
 //     console.log(
 //       name +
 //       ", " +
@@ -174,11 +192,13 @@ for (let i = 0; i < 9; i++) {
 //       interestRate +
 //       " your monthly rate is " +
 //       monthlyRate
-//     );
-//   }
+//       );
+
+//     }
+ 
 // };
 
-// variableInterestRate(200000, 0.05, 30);
+// variableInterestRate(200000, I, 30);
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
